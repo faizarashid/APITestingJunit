@@ -24,7 +24,7 @@ public class EmployeeServiceTest {
     @Mock
     private EmployeeRepository employeeRepository;
 
-    @Before
+    @BeforeEach
     public void setUp() {
 
         Employee emp = new Employee();
@@ -34,8 +34,8 @@ public class EmployeeServiceTest {
         emp1.setName("Test name 2");
         emp1.setEmpId(2L);
 
-        Mockito.when(employeeRepository
-                .findById(emp.getEmpId())).thenReturn(Optional.of(emp));
+//        Mockito.when(employeeRepository
+//                .findById(emp.getEmpId())).thenReturn(emp);
 
         List<Employee> employees = new ArrayList<Employee>();
         employees.add(emp);
@@ -45,8 +45,7 @@ public class EmployeeServiceTest {
     }
     @Test
     public void getAllEmployees() {
-
         List<Employee> emps = employeeService.getAllEmployees();
-        Assert.assertEquals(emps.size(), 2);
+        Assert.assertEquals( 2,emps.size());
     }
 }
